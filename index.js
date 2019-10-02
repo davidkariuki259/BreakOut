@@ -89,7 +89,7 @@ class Ball{
 	}
 	reset(){
 		this.position={x:parseInt(Math.random()*300),y:parseInt((Math.random()*300)+100)};
-		this.speed={x:2, y:-2};
+		this.speed={x:2.9, y:-2.9};
 	}
 	draw(ctx){
 		ctx.drawImage(this.image,this.position.x,this.position.y,this.size,this.size);
