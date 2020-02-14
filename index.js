@@ -167,6 +167,7 @@ class Game{
 		
 		this.gameObjects=[this.ball,this.paddle];
 		this.gamestate=game_state.running;	//start the game
+		document.title="Level "+(this.currentLevel+1);	//show current level on title bar
 		
 	}
 	
