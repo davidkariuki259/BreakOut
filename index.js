@@ -88,7 +88,7 @@ class Ball{
 		this.gameheight=game.gameheight;
 	}
 	reset(){
-		this.position={x:parseInt(Math.random()*300),y:parseInt((Math.random()*300)+100)};
+		this.position={x:parseInt(Math.random()*300),y:parseInt((Math.random()*300)+300)};
 		this.speed={x:2.9, y:-2.9};
 	}
 	draw(ctx){
@@ -154,7 +154,7 @@ class Game{
 		this.gameObjects=[];
 		this.lives=3;
 		this.bricks=[];
-		this.levels=[level_one,level_two,level_three];
+		this.levels=[level_one,level_two,level_three,level_four,level_five,level_six];
 		this.currentLevel=0;
 		
 	}
@@ -175,7 +175,7 @@ class Game{
 		if(this.gamestate===game_state.paused || this.gamestate===game_state.menu || this.gamestate===game_state.game_over) return;
 		if(this.bricks.length===0){
 			this.currentLevel++;
-			if (this.currentLevel>this.levels.length){	//display winning screen if levels are exhausted
+			if (this.currentLevel>(this.levels.length-1)){	//display winning screen if levels are exhausted
 				this.gamestate=game_state.finished;
 				return
 			}
@@ -295,6 +295,9 @@ function gameLoop(timestamp){
 const level_one=[[0,0,0,0,0,0,0,1,0,0]];
 const level_two=[[0,1,1,0,0,0,0,1,1,0],[1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1]];
 const level_three=[[1,1,1,0,1,1,0,1,1,0],[1,0,1,0,1,0,1,0,1,0],[0,1,0,1,0,1,0,1,0,1],[1,0,1,0,1,0,1,0,1,0],[0,0,0,0,0,1,0,0,0,0]];
+const level_four=[[0,1,1,0,0,0,0,1,1,0],[1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1],[1,1,1,0,1,1,0,1,1,0],[1,0,1,0,1,0,1,0,1,0],[0,1,0,1,0,1,0,1,0,1],[1,0,1,0,1,0,1,0,1,0],[0,0,0,0,0,1,0,0,0,0]];
+const level_five=[[0,1,1,0,0,0,0,1,1,0],[1,0,1,0,1,0,1,1,0,1],[0,1,1,0,1,1,0,1,1,0],[1,0,1,1,0,1,1,1,0,1],[1,1,1,0,1,1,0,0,1,0],[1,0,1,0,1,0,1,0,1,0],[0,1,0,1,0,1,0,1,0,1],[1,0,1,0,1,0,1,0,1,0],[0,0,0,0,0,1,0,0,0,0]];
+const level_six=[[0,0,0,0,0,0,0,1,0,0],[0,1,1,0,0,0,0,1,1,0],[1,0,1,0,1,0,1,1,0,1],[0,1,1,0,1,1,0,1,1,0],[1,0,1,1,0,1,1,1,0,1],[1,1,1,0,1,1,0,0,1,0],[1,0,1,0,1,0,1,0,1,0],[0,1,0,1,0,1,0,1,0,1],[1,0,1,0,1,0,1,0,1,0],[0,0,0,0,0,1,0,0,0,0]];
 
 const game_state={
 	paused:0,
@@ -325,5 +328,6 @@ let lasttime=0;
 
 
 requestAnimationFrame(gameLoop);
+
 
 
